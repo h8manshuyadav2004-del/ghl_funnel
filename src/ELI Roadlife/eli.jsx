@@ -40,7 +40,7 @@ const useAutoAdvance = (totalItems, interval = 8000) => {
 // --- END: Simulated Creative Components ---
 
 
-export default function ELI() {
+export default function App() {
   const testimonialsData = [
     { text: "ELI makes me feel like I’ve got someone in the passenger seat who actually cares about my day.", author: "John D.", role: "Owner-Operator" },
     { text: "The service paid for itself in the first month when they caught a compliance issue before it became a fine.", author: "Maria R.", role: "Long-Haul Driver" },
@@ -64,41 +64,41 @@ export default function ELI() {
   };
 
   // Revised useEffect to fix ScrollSpy for Features/Pricing
-useEffect(() => {
-  const handleScroll = () => {
-    const sections = ['home', 'problem', 'solution', 'features', 'testimonials', 'pricing'];
-    const NAV_HEIGHT = 80; // The navbar is 80px high
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'problem', 'solution', 'features', 'testimonials', 'pricing'];
+      const NAV_HEIGHT = 80; // The navbar is 80px high
 
-    // Find the currently active section
-    let currentActive = 'home';
-    
-    // Iterate from bottom to top for more accurate detection
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const sectionId = sections[i];
-      const section = document.getElementById(sectionId);
-      
-      if (section) {
-        // Use getBoundingClientRect() for accurate position relative to viewport
-        const rect = section.getBoundingClientRect();
-        
-        // A section is considered active if its top edge is above the top of the viewport 
-        // minus the navbar's height (or slightly below the navbar)
-        if (rect.top <= NAV_HEIGHT + 50) { // Added 50px buffer for stability
-          currentActive = sectionId;
-          break; 
+      // Find the currently active section
+      let currentActive = 'home';
+
+      // Iterate from bottom to top for more accurate detection
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sectionId = sections[i];
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+          // Use getBoundingClientRect() for accurate position relative to viewport
+          const rect = section.getBoundingClientRect();
+
+          // A section is considered active if its top edge is above the top of the viewport 
+          // minus the navbar's height (or slightly below the navbar)
+          if (rect.top <= NAV_HEIGHT + 50) { // Added 50px buffer for stability
+            currentActive = sectionId;
+            break;
+          }
         }
       }
-    }
-    
-    // Only update state if it has changed to prevent unnecessary re-renders
-    setActiveNav(currentActive);
-  };
 
-  // Run on mount and scroll
-  handleScroll();
-  window.addEventListener('scroll', handleScroll);
-  return () => window.removeEventListener('scroll', handleScroll);
-}, [setActiveNav]);
+      // Only update state if it has changed to prevent unnecessary re-renders
+      setActiveNav(currentActive);
+    };
+
+    // Run on mount and scroll
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [setActiveNav]);
 
   // NAV ITEM ORDER 
   const navItems = [
@@ -186,13 +186,19 @@ useEffect(() => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
 
-            {/* LOGO INTEGRATION */}
+            {/* LOGO INTEGRATION (Updated) */}
             <div className="flex items-center cursor-pointer" onClick={() => handleNavClick('home')}>
               <img
-                src="https://assets.cdn.filesafe.space/z85Y59lHSYlMrA8d4Ydy/media/68e3c175ffcf3fd63488d66b.jpeg" // *** REPLACE WITH ACTUAL PUBLIC URL ***
+                src="https://assets.cdn.filesafe.space/z85Y59lHSYlMrA8d4Ydy/media/68e3c175ffcf3fd63488d66b.jpeg"
                 alt="ELI RoadLife Logo"
+                // Kept H-10 size for the image
                 className="h-10 transition duration-300 hover:scale-105 filter invert"
               />
+
+              {/* Name is visible from 'sm' breakpoint up (mobile/desktop) */}
+              <span className="ml-3 text-lg font-bold text-yellow-400 tracking-wider hidden sm:block">
+                ELI RoadLife
+              </span>
             </div>
 
             {/* DESKTOP MENU */}
@@ -278,7 +284,7 @@ useEffect(() => {
             </p>
 
             {/* P2 (Detail): Detailed mission statement. */}
-            <p className="text-lg md:text-xl mb-10 text-gray-400 max-w-3xl mx-auto font-normal transition-opacity duration-500 delay-500">
+            <p className="text-lg md:text-xl mb-10 text-gray-200 max-w-3xl mx-auto font-normal transition-opacity duration-500 delay-500">
               ELI RoadLife Assistant is your on-call co-pilot for truck drivers across the U.S. and Canada.
               Unlike dispatchers or load-tracking apps, ELI focuses on the driver, combining genuine care with smart logistics.
               It anticipates needs, reduces stress, and keeps drivers connected while boosting revenue per mile.
