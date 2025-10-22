@@ -3,7 +3,6 @@ import { Truck, Phone, Heart, Clock, Shield, Star, CheckCircle, Users, Headphone
 import { motion } from "framer-motion";
 
 
-
 const slides = [
   { img: "/images/problem1.jpg", title: "Stress & Isolation", desc: "Loneliness, relationship strain, and mental health challenges from days away." },
   { img: "/images/problem2.jpg", title: "Heavy Compliance", desc: "Constant HOS monitoring, risk of violations, fines, and tedious paperwork." },

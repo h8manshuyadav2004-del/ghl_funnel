@@ -4,12 +4,13 @@ import { useWidgetContext } from './context/WidgetContext'
 import Javier from './Javier/javier'
 
 const App = () => {
-  const {
-    type
-  } = useWidgetContext()
+  // const {
+  //   type
+  // } = useWidgetContext()
 
   return (<>
-  { type === 'javier' ? (<Javier />) :(<ELI/>)}
+  {/* { type === 'javier' ? (<Javier />) :(<ELI/>)} */}
+  <Javier/>
   </> 
   )
 
