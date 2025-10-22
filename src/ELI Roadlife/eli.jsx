@@ -501,8 +501,7 @@ export default function App() {
         id="home"
         className="relative bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-900 overflow-hidden font-sans pt-[30px] md:pt-[20px]"
       >
-
-
+        
         <div
           className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-10"
           style={{
